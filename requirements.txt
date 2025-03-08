@@ -3,3 +3,4 @@ plotly
 seaborn
 matplotlib
 pandas
+streamlit_option_menu
