@@ -7,6 +7,7 @@ from streamlit_option_menu import option_menu
 
 def data_exploration():
     st.title("Data Exploration")
+    st.write("This is the page to explore the data!")
 
 def linear_regression():
     st.title("Linear Regression")
