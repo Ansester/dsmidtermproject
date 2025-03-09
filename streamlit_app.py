@@ -90,11 +90,8 @@ def linear_regression():
         with col4:
             val5 = st.number_input("% Hispanic", min_value=0, max_value=max_val - total, value=10)
             total += val5
-        
-        if total > max_val:
-            raise ValueError("The total percentage of racial groups cannot exceed 100. Use your brain!")
-    except ValueError as e:
-        st.error(str(e))
+    except:
+        st.write("Use your brain! Percentages must not exceed 100%!")
     
     val6 = st.slider("Select Percentage of Immigrants", min_value=0, max_value=100, value=10)
     
