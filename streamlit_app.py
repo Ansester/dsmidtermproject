@@ -70,6 +70,18 @@ def linear_regression():
     from sklearn import metrics
     st.write(metrics.mean_absolute_error(y_test,prediction))
 
+    val1 = st.slider("Select value 1", min_value=0, max_value=100, value=50)
+    val2 = st.slider("Select value 2", min_value=0, max_value=100, value=50)
+    val3 = st.slider("Select value 3", min_value=0, max_value=100, value=50)
+    val4 = st.slider("Select value 4", min_value=0, max_value=100, value=50)
+    
+    # Display selected values
+    st.write("### Selected Values:")
+    st.write(f"Value 1: {val1}")
+    st.write(f"Value 2: {val2}")
+    st.write(f"Value 3: {val3}")
+    st.write(f"Value 4: {val4}")
+
 def data_visualization():
     st.title("Data Visualization")
     import streamlit.components.v1 as components
