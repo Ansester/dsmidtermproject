@@ -6,8 +6,46 @@ import plotly.express as px
 from streamlit_option_menu import option_menu
 
 def data_exploration():
-    st.title("Data Exploration")
-    st.write("This is the page to explore the data!")
+    # Page Title
+    st.title("Crime Data Insights")
+    
+    # Introduction
+    st.markdown(
+        """
+        ## Why This Data is Important
+        Understanding crime statistics is essential for law enforcement, policymakers, and researchers. 
+        This dataset provides insights into crime patterns across various communities, allowing for data-driven decision-making.
+        
+        ### What Can Be Achieved with This Data?
+        - **Crime Rate Analysis**: Identify high-crime areas and trends over time.
+        - **Predictive Modeling**: Use machine learning to predict crime rates based on demographic and socioeconomic factors.
+        - **Policy Recommendations**: Help authorities allocate resources more effectively.
+        """
+    )
+    
+    # Basic Dataset Information
+    st.subheader("Dataset Overview")
+    
+    st.write(f"**Shape:** {df.shape[0]} rows × {df.shape[1]} columns")
+    
+    st.subheader("Column Data Types")
+    st.write(df.dtypes)
+    
+    st.subheader("Missing Values")
+    st.write(df.isnull().sum())
+    
+    st.subheader("Basic Statistics")
+    st.write(df.describe())
+    
+    # Allow users to explore the first few rows
+    st.subheader("Preview the Data")
+    st.write(df.head())
+    
+    # Allow users to select columns for visualization
+    columns = st.multiselect("Select columns to visualize", df.columns)
+    if columns:
+        st.write(df[columns].describe())
+
 
 def linear_regression():
     st.title("Linear Regression")
