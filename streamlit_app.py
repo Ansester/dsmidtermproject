@@ -59,8 +59,8 @@ def linear_regression():
     st.write("(Feature to be implemented based on dataset)")
     df2 = df[["medIncome","racepctblack","racePctWhite","racePctAsian","PctRecImmig10","ViolentCrimesPerPop"]]
     df2 = df2.dropna(axis=0,how='any')
-    X = df[["medIncome","racepctblack","racePctWhite","racePctAsian","PctRecImmig10"]]
-    y = df["ViolentCrimesPerPop"]
+    X = df2[["medIncome","racepctblack","racePctWhite","racePctAsian","PctRecImmig10"]]
+    y = df2["ViolentCrimesPerPop"]
     from sklearn.model_selection import train_test_split
     X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.2)
     from sklearn.linear_model import LinearRegression
