@@ -57,9 +57,9 @@ def linear_regression():
     st.title("Linear Regression")
     st.write("Perform linear regression on your dataset.")
     st.write("(Feature to be implemented based on dataset)")
-    df2 = df[["medIncome","racepctblack","racePctWhite","racePctAsian","PctRecImmig10","ViolentCrimesPerPop"]]
+    df2 = df[["medIncome","racepctblack","racePctWhite","racePctAsian","racePctHisp","PctRecImmig10","ViolentCrimesPerPop"]]
     df2 = df2.dropna(axis=0,how='any')
-    X = df2[["medIncome","racepctblack","racePctWhite","racePctAsian","PctRecImmig10"]]
+    X = df2[["medIncome","racepctblack","racePctWhite","racePctAsian","racePctHisp","PctRecImmig10"]]
     y = df2["ViolentCrimesPerPop"]
     from sklearn.model_selection import train_test_split
     X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.2)
@@ -75,25 +75,29 @@ def linear_regression():
     max_val = 100
     total = 0
     
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
     with col1:
-        val2 = st.number_input("% Black", min_value=0, max_value=max_val - total, value=0)
+        val2 = st.number_input("% Black", min_value=0, max_value=max_val - total, value=25)
         total += val2
     with col2:
-        val3 = st.number_input("% White", min_value=0, max_value=max_val - total, value=0)
+        val3 = st.number_input("% White", min_value=0, max_value=max_val - total, value=25)
         total += val3
     with col3:
-        val4 = st.number_input("% Asian", min_value=0, max_value=max_val - total, value=0)
+        val4 = st.number_input("% Asian", min_value=0, max_value=max_val - total, value=25)
+        total += val4
+    with col4:
+        val5 = st.number_input("% Hispanic", min_value=0, max_value=max_val - total, value=25)
     
-    val5 = st.slider("Select Percentage of Immigrants", min_value=0, max_value=100, value=0)
+    val6 = st.slider("Select Percentage of Immigrants", min_value=0, max_value=100, value=10)
     
-
-    input = pd.DataFrame({
+    # Creating a DataFrame row
+    df2 = pd.DataFrame({
         "medIncome": [val1],
         "racepctblack": [val2],
         "racePctWhite": [val3],
         "racePctAsian": [val4],
-        "PctRecImmig10": [val5],
+        "racePctHisp": [val5],
+        "PctRecImmig10": [val6],
     })
 
     output = lr.predict(input)
