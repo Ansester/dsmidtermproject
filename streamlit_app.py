@@ -76,7 +76,7 @@ def linear_regression():
 
     # Define maximum percentage and initial values
     max_val = 100
-    default_value = 10
+    default_value = 25
     total = 0
     
     # Loop to ensure total percentage doesn't exceed 100
@@ -85,19 +85,19 @@ def linear_regression():
         col1, col2, col3, col4 = st.columns(4)
         
         with col1:
-            val2 = st.number_input("% Black", min_value=0, max_value=max_val - total, value=default_value)
+            val2 = st.number_input("% Black", min_value=0, max_value=max_val, value=default_value)
             total += val2
         
         with col2:
-            val3 = st.number_input("% White", min_value=0, max_value=max_val - total, value=default_value)
+            val3 = st.number_input("% White", min_value=0, max_value=max_val, value=default_value)
             total += val3
         
         with col3:
-            val4 = st.number_input("% Asian", min_value=0, max_value=max_val - total, value=default_value)
+            val4 = st.number_input("% Asian", min_value=0, max_value=max_val, value=default_value)
             total += val4
         
         with col4:
-            val5 = st.number_input("% Hispanic", min_value=0, max_value=max_val - total, value=default_value)
+            val5 = st.number_input("% Hispanic", min_value=0, max_value=max_val, value=default_value)
             total += val5
     
         # Check if the total exceeds the limit
