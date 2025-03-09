@@ -70,17 +70,24 @@ def linear_regression():
     from sklearn import metrics
     st.write(metrics.mean_absolute_error(y_test,prediction))
 
-    val1 = st.slider("Select value 1", min_value=0, max_value=100, value=50)
-    val2 = st.slider("Select value 2", min_value=0, max_value=100, value=50)
-    val3 = st.slider("Select value 3", min_value=0, max_value=100, value=50)
-    val4 = st.slider("Select value 4", min_value=0, max_value=100, value=50)
+    val1 = st.slider("Select Income", min_value=5000, max_value=300000, value=30000)
+    val2 = st.slider("Select Percentage of Black People", min_value=0, max_value=100, value=10)
+    val3 = st.slider("Select Percentage of White People", min_value=0, max_value=100, value=10)
+    val4 = st.slider("Select Percentage of Asian People", min_value=0, max_value=100, value=10)
+    val5 = st.slider("Select Percentage of Immigrants", min_value=0, max_value=100, value=10)
     
-    # Display selected values
-    st.write("### Selected Values:")
-    st.write(f"Value 1: {val1}")
-    st.write(f"Value 2: {val2}")
-    st.write(f"Value 3: {val3}")
-    st.write(f"Value 4: {val4}")
+
+    input = pd.DataFrame({
+        "medIncome": [val1],
+        "racepctblack": [val2],
+        "racePctWhite": [val3],
+        "racePctAsian": [val4],
+        "PctRecImmig10": [val5],
+    })
+
+    output = lr.predict(input)
+
+    st.write(output)
 
 def data_visualization():
     st.title("Data Visualization")
