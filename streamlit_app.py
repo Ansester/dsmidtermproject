@@ -13,7 +13,7 @@ df = load_data()
 
 def data_exploration():
     # Page Title
-    st.title("Crime Data Insights")
+    st.title("Regression Analysis of Crime Incidents and Societal Trends")
     
     # Introduction
     st.markdown(
