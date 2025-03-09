@@ -5,6 +5,12 @@ import pandas as pd
 import plotly.express as px
 from streamlit_option_menu import option_menu
 
+def load_data():
+    file_path = "crimedata.csv"  # Update path if necessary
+    return pd.read_csv(file_path)
+
+df = load_data()
+
 def data_exploration():
     # Page Title
     st.title("Crime Data Insights")
