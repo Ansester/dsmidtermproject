@@ -4,5 +4,4 @@ seaborn
 matplotlib
 pandas
 streamlit_option_menu
-sklearn.model_selection
-sklearn.linear_model
+scikit-learn
