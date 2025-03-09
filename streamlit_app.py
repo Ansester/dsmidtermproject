@@ -57,6 +57,18 @@ def linear_regression():
     st.title("Linear Regression")
     st.write("Perform linear regression on your dataset.")
     st.write("(Feature to be implemented based on dataset)")
+    df2 = df[["medIncome","racepctblack","racePctWhite","racePctAsian","PctRecImmig10","ViolentCrimesPerPop"]]
+    df2 = df2.dropna(axis=0,how='any')
+    X = df[["medIncome","racepctblack","racePctWhite","racePctAsian","PctRecImmig10"]]
+    y = df["ViolentCrimesPerPop"]
+    from sklearn.model_selection import train_test_split
+    X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.2)
+    from sklearn.linear_model import LinearRegression
+    lr = LinearRegression()
+    lr.fit(X_train,y_train)
+    prediction = lr.predict(X_test)
+    from sklearn import metrics
+    st.write(metrics.mean_absolute_error(y_test,prediction))
 
 def data_visualization():
     st.title("Data Visualization")
