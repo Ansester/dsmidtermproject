@@ -91,7 +91,7 @@ def linear_regression():
     val6 = st.slider("Select Percentage of Immigrants", min_value=0, max_value=100, value=10)
     
     # Creating a DataFrame row
-    df2 = pd.DataFrame({
+    input = pd.DataFrame({
         "medIncome": [val1],
         "racepctblack": [val2],
         "racePctWhite": [val3],
@@ -102,7 +102,7 @@ def linear_regression():
 
     output = lr.predict(input)
 
-    st.write(output[0])
+    st.write(output)
 
 def data_visualization():
     st.title("Data Visualization")
