@@ -72,21 +72,23 @@ def linear_regression():
 
     val1 = st.slider("Select Income", min_value=5000, max_value=300000, value=30000)
     
+    # Constrained percentage sliders using interactive input
     max_val = 100
     total = 0
     
     col1, col2, col3, col4 = st.columns(4)
     with col1:
-        val2 = st.number_input("% Black", min_value=0, max_value=max_val - total, value=25)
-        total += val2
+        val2 = st.number_input("% Black", min_value=0, max_value=max_val - total, value=10)
+        total = min(max_val, total + val2)
     with col2:
-        val3 = st.number_input("% White", min_value=0, max_value=max_val - total, value=25)
-        total += val3
+        val3 = st.number_input("% White", min_value=0, max_value=max_val - total, value=10)
+        total = min(max_val, total + val3)
     with col3:
-        val4 = st.number_input("% Asian", min_value=0, max_value=max_val - total, value=25)
-        total += val4
+        val4 = st.number_input("% Asian", min_value=0, max_value=max_val - total, value=10)
+        total = min(max_val, total + val4)
     with col4:
-        val5 = st.number_input("% Hispanic", min_value=0, max_value=max_val - total, value=25)
+        val5 = st.number_input("% Hispanic", min_value=0, max_value=max_val - total, value=10)
+        total = min(max_val, total + val5)
     
     val6 = st.slider("Select Percentage of Immigrants", min_value=0, max_value=100, value=10)
     
