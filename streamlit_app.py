@@ -73,10 +73,19 @@ def linear_regression():
     val1 = st.slider("Select Income", min_value=5000, max_value=300000, value=30000)
     
     max_val = 100
-    val2 = st.slider("Select Percentage of Black People", min_value=0, max_value=max_val, value=10)
-    val3 = st.slider("Select Percentage of White People", min_value=0, max_value=max_val - val2, value=10)
-    val4 = st.slider("Select Percentage of Asian People", min_value=0, max_value=max_val - val2 - val3, value=10)
-    val5 = st.slider("Select Percentage of Immigrants", min_value=0, max_value=100, value=10)
+    total = 0
+    
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        val2 = st.number_input("% Black", min_value=0, max_value=max_val - total, value=0)
+        total += val2
+    with col2:
+        val3 = st.number_input("% White", min_value=0, max_value=max_val - total, value=0)
+        total += val3
+    with col3:
+        val4 = st.number_input("% Asian", min_value=0, max_value=max_val - total, value=0)
+    
+    val5 = st.slider("Select Percentage of Immigrants", min_value=0, max_value=100, value=0)
     
 
     input = pd.DataFrame({
