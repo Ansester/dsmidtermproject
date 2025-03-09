@@ -71,9 +71,11 @@ def linear_regression():
     st.write(metrics.mean_absolute_error(y_test,prediction))
 
     val1 = st.slider("Select Income", min_value=5000, max_value=300000, value=30000)
-    val2 = st.slider("Select Percentage of Black People", min_value=0, max_value=100, value=10)
-    val3 = st.slider("Select Percentage of White People", min_value=0, max_value=100, value=10)
-    val4 = st.slider("Select Percentage of Asian People", min_value=0, max_value=100, value=10)
+    
+    max_val = 100
+    val2 = st.slider("Select Percentage of Black People", min_value=0, max_value=max_val, value=10)
+    val3 = st.slider("Select Percentage of White People", min_value=0, max_value=max_val - val2, value=10)
+    val4 = st.slider("Select Percentage of Asian People", min_value=0, max_value=max_val - val2 - val3, value=10)
     val5 = st.slider("Select Percentage of Immigrants", min_value=0, max_value=100, value=10)
     
 
@@ -87,7 +89,7 @@ def linear_regression():
 
     output = lr.predict(input)
 
-    st.write(output)
+    st.write(output[0])
 
 def data_visualization():
     st.title("Data Visualization")
