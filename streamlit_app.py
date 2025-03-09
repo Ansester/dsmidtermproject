@@ -72,26 +72,43 @@ def linear_regression():
 
     val1 = st.slider("Select Income", min_value=5000, max_value=300000, value=30000)
     
-    # Constrained percentage sliders using interactive input
+
+
+    # Define maximum percentage and initial values
     max_val = 100
+    default_value = 10
     total = 0
     
-    col1, col2, col3, col4 = st.columns(4)
-    try:
+    # Loop to ensure total percentage doesn't exceed 100
+    while True:
+        total = 0
+        col1, col2, col3, col4 = st.columns(4)
+        
         with col1:
-            val2 = st.number_input("% Black", min_value=0, max_value=max_val - total, value=10)
+            val2 = st.number_input("% Black", min_value=0, max_value=max_val - total, value=default_value)
             total += val2
+        
         with col2:
-            val3 = st.number_input("% White", min_value=0, max_value=max_val - total, value=10)
+            val3 = st.number_input("% White", min_value=0, max_value=max_val - total, value=default_value)
             total += val3
+        
         with col3:
-            val4 = st.number_input("% Asian", min_value=0, max_value=max_val - total, value=10)
+            val4 = st.number_input("% Asian", min_value=0, max_value=max_val - total, value=default_value)
             total += val4
+        
         with col4:
-            val5 = st.number_input("% Hispanic", min_value=0, max_value=max_val - total, value=10)
+            val5 = st.number_input("% Hispanic", min_value=0, max_value=max_val - total, value=default_value)
             total += val5
-    except:
-        st.write("Use your brain! Percentages must not exceed 100%!")
+    
+        # Check if the total exceeds the limit
+        if total > max_val:
+            st.warning("Total percentage exceeds 100%. Resetting to default values.")
+            continue  # Start the loop over to reset values
+        else:
+            break  # Break the loop if the total is within the limit
+    
+    st.write(f"Percentages set successfully: {val2}% Black, {val3}% White, {val4}% Asian, {val5}% Hispanic.")
+
     
     val6 = st.slider("Select Percentage of Immigrants", min_value=0, max_value=100, value=10)
     
