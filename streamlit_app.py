@@ -59,7 +59,7 @@ def linear_regression():
     from sklearn import metrics
     
     st.title("Linear Regression")
-    st.write("Predict violent crimes based on our model.")
+       st.write("Predict violent crimes based on our model.")
     
     # Load dataset (assuming df is already loaded in your environment)
     df2 = df[["medIncome", "racepctblack", "racePctWhite", "racePctAsian", "racePctHisp", "PctRecImmig10", "ViolentCrimesPerPop"]]
@@ -69,12 +69,20 @@ def linear_regression():
     y = df2["ViolentCrimesPerPop"]
     
     # Split the dataset
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     
     # Train the model
     lr = LinearRegression()
     lr.fit(X_train, y_train)
     prediction = lr.predict(X_test)
+    
+    # Calculate Mean Absolute Error
+    mae = metrics.mean_absolute_error(y_test, prediction)
+    
+    # Display model performance
+    st.subheader("Model Performance")
+    st.write(f"**Mean Absolute Error:** {mae:.4f}")
+    st.write(f"**R² Score:** {lr.score(X_test, y_test):.4f}")
     
     # User input
     val1 = st.slider("Select Income", min_value=5000, max_value=300000, value=30000)
@@ -96,7 +104,7 @@ def linear_regression():
     if total_percentage > 100:
         st.error("Total percentage exceeds 100%. Please adjust values.")
     else:
-        st.write(f"Percentages set successfully: {val2}% Black, {val3}% White, {val4}% Asian, {val5}% Hispanic.")
+        st.success(f"Percentages set successfully: {val2}% Black, {val3}% White, {val4}% Asian, {val5}% Hispanic.")
         
         # Creating a DataFrame row for prediction
         input_data = pd.DataFrame({
@@ -109,7 +117,8 @@ def linear_regression():
         })
         
         output = lr.predict(input_data)
-        st.write("Predicted Violent Crimes Per Pop:", output[0])
+        st.subheader("Prediction Result")
+        st.write(f"**Predicted Violent Crimes Per Pop:** {output[0]:.4f}")
 
 def data_visualization():
     st.title("Data Visualization")
