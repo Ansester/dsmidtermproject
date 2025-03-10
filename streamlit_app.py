@@ -59,7 +59,7 @@ def linear_regression():
     from sklearn import metrics
     
     st.title("Linear Regression")
-       st.write("Predict violent crimes based on our model.")
+    st.write("Predict violent crimes based on our model.")
     
     # Load dataset (assuming df is already loaded in your environment)
     df2 = df[["medIncome", "racepctblack", "racePctWhite", "racePctAsian", "racePctHisp", "PctRecImmig10", "ViolentCrimesPerPop"]]
