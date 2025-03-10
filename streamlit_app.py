@@ -59,8 +59,7 @@ def linear_regression():
     from sklearn import metrics
     
     st.title("Linear Regression")
-    st.write("Perform linear regression on your dataset.")
-    st.write("(Feature to be implemented based on dataset)")
+    st.write("Predict violent crimes based on our model.")
     
     # Load dataset (assuming df is already loaded in your environment)
     df2 = df[["medIncome", "racepctblack", "racePctWhite", "racePctAsian", "racePctHisp", "PctRecImmig10", "ViolentCrimesPerPop"]]
@@ -76,9 +75,6 @@ def linear_regression():
     lr = LinearRegression()
     lr.fit(X_train, y_train)
     prediction = lr.predict(X_test)
-    
-    # Display MAE
-    st.write("Mean Absolute Error:", metrics.mean_absolute_error(y_test, prediction))
     
     # User input
     val1 = st.slider("Select Income", min_value=5000, max_value=300000, value=30000)
@@ -98,7 +94,7 @@ def linear_regression():
     # Validate total percentage
     total_percentage = val2 + val3 + val4 + val5
     if total_percentage > 100:
-        st.error("Total racial percentage exceeds 100%. Please adjust values.")
+        st.error("Total percentage exceeds 100%. Please adjust values.")
     else:
         st.write(f"Percentages set successfully: {val2}% Black, {val3}% White, {val4}% Asian, {val5}% Hispanic.")
         
@@ -113,7 +109,7 @@ def linear_regression():
         })
         
         output = lr.predict(input_data)
-        st.write("Predicted Violent Crimes Per Pop:", output)
+        st.write("Predicted Violent Crimes Per Pop:", output[0])
 
 def data_visualization():
     st.title("Data Visualization")
