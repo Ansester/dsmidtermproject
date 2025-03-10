@@ -62,11 +62,11 @@ def linear_regression():
     st.write("Predict violent crimes based on our model.")
     
     # Load dataset (assuming df is already loaded in your environment)
-    df2 = df[["medIncome", "racepctblack", "racePctWhite", "racePctAsian", "racePctHisp", "PctRecImmig10", "ViolentCrimesPerPop"]]
+    df2 = df[["medIncome", "racepctblack", "racePctWhite", "racePctAsian", "racePctHisp", "PctRecImmig10", "CrimePerCapita"]]
     df2 = df2.dropna()
     
     X = df2[["medIncome", "racepctblack", "racePctWhite", "racePctAsian", "racePctHisp", "PctRecImmig10"]]
-    y = df2["ViolentCrimesPerPop"]
+    y = df2["CrimePerCapita"]
     
     # Split the dataset
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -118,7 +118,7 @@ def linear_regression():
         
         output = lr.predict(input_data)
         st.subheader("Prediction Result")
-        st.write(f"**Predicted Violent Crimes Per Pop:** {output[0]:.4f}")
+        st.write(f"**Predicted Crime per capita:** {output[0]:.4f}")
 
 def data_visualization():
     st.title("Data Visualization")
