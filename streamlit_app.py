@@ -121,13 +121,10 @@ def data_visualization():
     components.iframe(look_dashboard_url, height=600)
 
 
-def conclusions():
-    st.title("Conclusions")
-    st.write("Summarize the insights from your analysis.")
 
 # Sidebar Navigation
 with st.sidebar:
-    selected = option_menu("Main Menu", ["Data Exploration", "Linear Regression", "Data Visualization", "Conclusions"],
+    selected = option_menu("Main Menu", ["Data Exploration", "Linear Regression", "Data Visualization"],
                            icons=["database", "graph-up", "bar-chart", "clipboard-check"],
                            menu_icon="menu-button-wide", default_index=0)
 
@@ -138,5 +135,4 @@ elif selected == "Linear Regression":
     linear_regression()
 elif selected == "Data Visualization":
     data_visualization()
-elif selected == "Conclusions":
-    conclusions()
+
